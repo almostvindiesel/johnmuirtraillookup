@@ -1,13 +1,16 @@
 # JMT Permit Autofill — Chrome Extension
 
-A Chrome extension that streamlines checking availability on Recreation.gov for John Muir Trail overnight permits. It injects a floating control panel into the permit page, autofills your entry date and group size, and filters the availability table to show only the two routes of interest.
+A Chrome extension that streamlines checking availability on Recreation.gov for John Muir Trail overnight permits. It injects a floating control panel into the permit page, autofills your entry date and group size, and filters the availability table to show only the two routes of interest, saving you a few seconds when permits become available.
+
+<img width="3424" height="1328" alt="CleanShot 2026-03-07 at 16 51 58@2x" src="https://github.com/user-attachments/assets/d47100e6-c346-4ac7-a43f-9d0ff49c2d15" />
+
 
 ## Filtered Routes
 
 The extension hides all permit entry points except:
 
-- **703** — Happy Isles to Little Yosemite Valley
-- **884** — Lyell Canyon
+- **703** — Happy Isles->Past LYV (Donohue Pass Eligible)
+- **884** — Lyell Canyon (Donohue Pass Eligible)
 
 ## Installation (Developer / Unpacked Mode)
 
