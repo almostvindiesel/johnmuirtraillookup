@@ -1,8 +1,8 @@
 const DEFAULT_DATE  = "2026-06-28";
 const DEFAULT_GROUP = 1;
-const SHOW_IDS = ["703", "884"];
+const SHOW_IDS_NOBO = ["JM35"];
 
-function log(msg) { console.log("[JMT]", msg); }
+function log(msg) { console.log("[JMT-NOBO]", msg); }
 
 function setReactVal(el, value) {
   const proto = el.tagName === "SELECT" ? HTMLSelectElement : HTMLInputElement;
@@ -131,26 +131,22 @@ function doFill(dateISO, groupSize, statusEl) {
       statusEl.textContent = "✅ " + dateISO + " · " + groupSize + " person(s)";
       statusEl.style.color = "#7fc47a";
       log("doFill: complete");
-      // Re-run filter after table re-renders with new date results
-      setTimeout(filterTable, 500);
-      setTimeout(filterTable, 1500);
-      setTimeout(filterTable, 3000);
+      setTimeout(filterTableNobo, 500);
+      setTimeout(filterTableNobo, 1500);
+      setTimeout(filterTableNobo, 3000);
     });
   });
 }
 
 // ── Table filter ──────────────────────────────────────────────────────────
-function filterTable() {
-  // Each data row has role="row" and contains gridcells
-  // The first gridcell's inner div contains the ID number as text
+function filterTableNobo() {
   const rows = [...document.querySelectorAll('[role="row"]')];
   let hidden = 0, shown = 0;
   rows.forEach(row => {
     const cells = row.querySelectorAll('[role="gridcell"]');
     if (!cells.length) return; // header — skip
-    // Get the raw text of the first cell, stripping all whitespace
     const idText = (cells[0].textContent || "").trim();
-    if (SHOW_IDS.includes(idText)) {
+    if (SHOW_IDS_NOBO.includes(idText)) {
       row.style.removeProperty("display");
       shown++;
     } else {
@@ -161,17 +157,15 @@ function filterTable() {
   if (hidden + shown > 0) log("filterTable: shown=" + shown + " hidden=" + hidden);
 }
 
-function initFilter() {
-  // Wait for grid to render
+function initFilterNobo() {
   waitFor(
     () => {
       const rows = [...document.querySelectorAll('[role="row"]')];
       return rows.filter(r => r.querySelectorAll('[role="gridcell"]').length > 0).length > 0;
     },
     () => {
-      filterTable();
-      // Re-apply on any DOM mutation anywhere in the body
-      new MutationObserver(() => filterTable()).observe(document.body, { childList: true, subtree: true });
+      filterTableNobo();
+      new MutationObserver(() => filterTableNobo()).observe(document.body, { childList: true, subtree: true });
     },
     "grid rows",
     300
@@ -179,7 +173,7 @@ function initFilter() {
 }
 
 // ── UI ────────────────────────────────────────────────────────────────────
-function injectUI() {
+function injectUINobo() {
   if (document.getElementById("jmt-autofill-panel")) return;
   log("injectUI: injecting");
 
@@ -210,7 +204,7 @@ function injectUI() {
   const panel = document.createElement("div");
   panel.id = "jmt-autofill-panel";
   panel.innerHTML = `
-    <div id="jmt-hdr">⛰️ JMT Autofill</div>
+    <div id="jmt-hdr">⛰️ JMT Autofill (NOBO)</div>
     <div id="jmt-body">
       <label class="jmt-lbl">Entry Date</label>
       <input id="jmt-date" type="date" value="2026-06-28">
@@ -254,14 +248,14 @@ function injectUI() {
     document.removeEventListener("mouseup", stopdrag);
   }
 
-  initFilter();
+  initFilterNobo();
 }
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", injectUI);
+  document.addEventListener("DOMContentLoaded", injectUINobo);
 } else {
-  injectUI();
+  injectUINobo();
 }
 new MutationObserver(() => {
-  if (!document.getElementById("jmt-autofill-panel")) injectUI();
+  if (!document.getElementById("jmt-autofill-panel")) injectUINobo();
 }).observe(document.body, { childList: true, subtree: false });

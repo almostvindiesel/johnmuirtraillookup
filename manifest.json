@@ -10,6 +10,16 @@
       "matches": ["https://www.recreation.gov/permits/445859/*"],
       "js": ["content.js"],
       "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.recreation.gov/permits/445860/*"],
+      "js": ["content-nobo.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.recreation.gov/permits/233262/*"],
+      "js": ["content-inyo.js"],
+      "run_at": "document_idle"
     }
   ],
   "icons": {
