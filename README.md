@@ -1,12 +1,13 @@
 # JMT Permit Autofill — Chrome Extension
 
-A Chrome extension that streamlines checking availability on Recreation.gov for John Muir Trail permits. It injects a floating control panel into supported permit pages, autofills your entry date and group size, and filters the availability table to show only the entry points of interest so you can see availability and snag a permit as soon as they become available.
+A Chrome extension that streamlines checking availability on Recreation.gov for John Muir Trail permits. It injects a floating control panel into the most popular SOBO and NOBO supported permit pages, autofills your entry date and group size, and filters the availability table to show only the entry points of interest so you can see availability and snag a permit as soon as they become available. Example tool functionality:
 
-<img width="3424" height="1328" alt="CleanShot 2026-03-07 at 16 51 58@2x" src="https://github.com/user-attachments/assets/d47100e6-c346-4ac7-a43f-9d0ff49c2d15" />
+![CleanShot 2026-03-09 at 10 58 12](https://github.com/user-attachments/assets/263bee4b-eb8c-4377-828a-ea685ba4c500)
+
 
 ## Supported Permit Pages
 
-The extension activates on three Recreation.gov permit pages, each with its own filtered routes:
+The extension activates on JMT three recreation.gov SOBO / NOBO permit pages, each with its own filtered routes:
 
 ### SOBO: Yosemite (permit 445859)
 Start in Yosemite Valley, hike south (the most popular route)
